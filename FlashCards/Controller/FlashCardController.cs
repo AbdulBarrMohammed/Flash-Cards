@@ -7,6 +7,25 @@ namespace FlashCards.Controller
 {
     public class FlashCardController
     {
-        
+
+        public void DeleteFlashCard()
+        {
+
+        }
+
+        public void AddFlashCard()
+        {
+
+        }
+
+        public void UpdateFlashCard()
+        {
+
+        }
+
+        public void DisplayAllFlashCards()
+        {
+
+        }
     }
 }
