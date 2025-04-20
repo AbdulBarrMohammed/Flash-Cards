@@ -7,6 +7,24 @@ namespace FlashCards.Controller
 {
     public class StudySession
     {
-        
+        public void InsertSession()
+        {
+
+        }
+
+        public void DeleteSession()
+        {
+
+        }
+
+        public void UpdateSession()
+        {
+
+        }
+
+        public void DisplayAllSessions()
+        {
+
+        }
     }
 }
