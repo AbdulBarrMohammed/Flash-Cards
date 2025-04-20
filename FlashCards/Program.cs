@@ -1,6 +1,4 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using FlashCards;
 
-app.MapGet("/", () => "Hello World!");
-
-app.Run();
+UserInterface fc = new UserInterface();
+fc.MainMenu();
