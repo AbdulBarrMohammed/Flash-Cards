@@ -10,6 +10,6 @@ namespace FlashCards.Models
         public int Id {get; set;}
         public string Name {get; set;}
 
-        public List<FlashCard> FlashCards {get; set;}
+        public FlashCard[] FlashCards {get; set;}
     }
 }

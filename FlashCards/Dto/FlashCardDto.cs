@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FlashCards.Models
+namespace FlashCards.Dto
 {
-    public class FlashCard
+    public class FlashCardDto
     {
         public int Id { get; set; }
-
-        public int StackId {get; set;}
-
         public string Question {get; set;}
         public string Answer {get; set;}
     }
