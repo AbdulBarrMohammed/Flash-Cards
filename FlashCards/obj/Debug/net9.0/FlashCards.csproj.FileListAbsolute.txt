@@ -30,3 +30,9 @@
 /Users/barrmohammed/Desktop/DotnetAcademy/FlashCards/FlashCards/obj/Debug/net9.0/FlashCards.pdb
 /Users/barrmohammed/Desktop/DotnetAcademy/FlashCards/FlashCards/obj/Debug/net9.0/FlashCards.genruntimeconfig.cache
 /Users/barrmohammed/Desktop/DotnetAcademy/FlashCards/FlashCards/obj/Debug/net9.0/ref/FlashCards.dll
+/Users/barrmohammed/Desktop/DotnetAcademy/FlashCards/FlashCards/bin/Debug/net9.0/System.Data.SqlClient.dll
+/Users/barrmohammed/Desktop/DotnetAcademy/FlashCards/FlashCards/bin/Debug/net9.0/runtimes/win-arm64/native/sni.dll
+/Users/barrmohammed/Desktop/DotnetAcademy/FlashCards/FlashCards/bin/Debug/net9.0/runtimes/win-x64/native/sni.dll
+/Users/barrmohammed/Desktop/DotnetAcademy/FlashCards/FlashCards/bin/Debug/net9.0/runtimes/win-x86/native/sni.dll
+/Users/barrmohammed/Desktop/DotnetAcademy/FlashCards/FlashCards/bin/Debug/net9.0/runtimes/unix/lib/net8.0/System.Data.SqlClient.dll
+/Users/barrmohammed/Desktop/DotnetAcademy/FlashCards/FlashCards/bin/Debug/net9.0/runtimes/win/lib/net8.0/System.Data.SqlClient.dll

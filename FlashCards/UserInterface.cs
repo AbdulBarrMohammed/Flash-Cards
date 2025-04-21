@@ -52,6 +52,7 @@ namespace FlashCards
         {
             //display different stacks to user
             Console.WriteLine("");
+            stackController.DisplayAllStacks();
 
         }
     }

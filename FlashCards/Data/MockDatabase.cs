@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data;
 
 
 namespace FlashCards.Data
 {
+
     public static class MockDatabase
     {
+
         static void ConnectToDatabase()
         {
-
-            string connectionString = "Server=YOUR_SERVER_NAME;Database=YOUR_DATABASE_NAME;Trusted_Connection=True;TrustServerCertificate=True;";
+            string connectionString = "Server=localhost,1433;Database=FlashCards;User Id=SA;Password=Allahis#1;TrustServerCertificate=True;";
 
             using (var connection = new SqlConnection(connectionString))
             {
@@ -33,9 +35,12 @@ namespace FlashCards.Data
                 connection.Close();
             }
 
-            Console.WriteLine("Table ensured. Now you can continue...");
 
+        }
 
+        public static string GetConnectionString()
+        {
+            return  "Server=localhost,1433;Database=FlashCards;User Id=SA;Password=Allahis#1;TrustServerCertificate=True;";
         }
     }
 }
