@@ -13,7 +13,8 @@ namespace FlashCards
         private StackController stackController = new();
         internal void MainMenu()
         {
-            while (true)
+            bool isOn = true;
+            while (isOn)
             {
                 Console.Clear();
                 var actionChoice = AnsiConsole.Prompt(
@@ -28,7 +29,7 @@ namespace FlashCards
                 switch(actionChoice)
                 {
                     case MenuAction.Exit:
-                        Console.WriteLine("Exit was chosen");
+                        isOn = false;
                         break;
                     case MenuAction.Manage_Stacks:
                         ManageStacks();
@@ -42,17 +43,27 @@ namespace FlashCards
                         break;
                 }
 
-                // Wait for user input before continuing
-                Console.WriteLine("\nPress any key to return to the menu...");
-                Console.ReadKey();
+                // If program is still on let user enter any key to continue program to main menu
+                if (isOn)
+                {
+                    // Wait for user input before continuing
+                    Console.WriteLine("\nPress any key to return to the menu...");
+                    Console.ReadKey();
+                }
+
             }
         }
 
         public void ManageStacks()
         {
-            //display different stacks to user
-            Console.WriteLine("");
+            // Display different stacks to user
             stackController.DisplayAllStacks();
+            Console.WriteLine("---------------------------");
+            Console.WriteLine("Input a current stack name");
+            Console.WriteLine("Or input 0 to exit input");
+            Console.WriteLine("---------------------------");
+            var stackName = Console.ReadLine();
+            Console.WriteLine(stackName);
 
         }
     }
