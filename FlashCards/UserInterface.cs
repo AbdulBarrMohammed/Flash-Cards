@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FlashCards.Controller;
 using Spectre.Console;
 using static FlashCards.Enums.Enums;
 
@@ -9,6 +10,7 @@ namespace FlashCards
 {
     public class UserInterface
     {
+        private StackController stackController = new();
         internal void MainMenu()
         {
             while (true)
@@ -21,21 +23,19 @@ namespace FlashCards
                     System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(
                         action.ToString().Replace("_", " ").ToLower()))
                 .AddChoices(Enum.GetValues<MenuAction>()));
-                
+
 
                 switch(actionChoice)
                 {
                     case MenuAction.Exit:
                         Console.WriteLine("Exit was chosen");
-                        //AddCodeItems();
                         break;
                     case MenuAction.Manage_Stacks:
-                        Console.WriteLine("Manage Stacks was chosen");
-                        //ViewCodeItems();
+                        ManageStacks();
                         break;
                     case MenuAction.Manage_Flashcards:
                         Console.WriteLine("Manage Flashcards was chosen");
-                        //RemoveCodeItem();
+                        //ManageFlashCards();
                         break;
                     case MenuAction.view_study_session_data:
                         Console.WriteLine("View study session was chosen");
@@ -46,6 +46,13 @@ namespace FlashCards
                 Console.WriteLine("\nPress any key to return to the menu...");
                 Console.ReadKey();
             }
+        }
+
+        public void ManageStacks()
+        {
+            //display different stacks to user
+            Console.WriteLine("");
+
         }
     }
 }

@@ -15,5 +15,6 @@ namespace FlashCards.Enums
             Study,
             view_study_session_data
         }
+
     }
 }
