@@ -63,21 +63,55 @@ namespace FlashCards
             Console.WriteLine("Or input 0 to exit input");
             Console.WriteLine("---------------------------");
             var stackName = Console.ReadLine();
-            Console.WriteLine(stackName);
 
-            // Get stack id from stackName
-            int stackId = stackController.GetStackId(stackName);
 
-            // Pass id to function to display stack
-            SelectStackItem(stackId);
+            // Pass stack name to function to display stack
+            SelectStackItem(stackName);
 
         }
 
-        public void SelectStackItem(int stackId)
-        {
-            Console.WriteLine($"The name you choose has an id of {stackId}");
 
-            // Display all flashcards in selected stack
+        public void SelectStackItem(string stackName)
+        {
+            // Get stack id from stackName
+            int stackId = stackController.GetStackId(stackName);
+
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine($"Current working stack: {stackName}\n\n");
+
+            Console.WriteLine("O to return to main menu");
+            Console.WriteLine("X to change current stack");
+            Console.WriteLine("V to view all Flashcards in stack");
+            Console.WriteLine("A to view X amount of cards in stack");
+            Console.WriteLine("C to Create a Flashcard in current stack");
+            Console.WriteLine("D to Delete a Flashcard");
+            Console.WriteLine("------------------------------------");
+
+            var option = Console.ReadLine();
+            switch(option)
+            {
+                case "O":
+                    MainMenu();
+                    break;
+                case "X":
+                    break;
+                case "V":
+                    DisplayAllFlashCards(stackId);
+                    break;
+                case "A":
+                    break;
+                case "C":
+                    break;
+                case "E":
+                    break;
+                case "D":
+                    break;
+            }
+
+        }
+
+        public void DisplayAllFlashCards(int stackId)
+        {
             stackController.DisplayAllStackCards(stackId);
         }
     }
