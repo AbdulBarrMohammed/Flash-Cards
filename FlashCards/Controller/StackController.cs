@@ -57,6 +57,39 @@ namespace FlashCards.Controller
 
         }
 
+        public void DisplayAllStackCards(int stackId)
+        {
+
+            using (var connection = new SqlConnection(MockDatabase.GetConnectionString()))
+            {
+                connection.Open();
+
+                var selectCmd = connection.CreateCommand();
+                selectCmd.CommandText = "SELECT Question, Answer FROM FlashCard WHERE StackId = @stackId";
+                selectCmd.Parameters.AddWithValue("@stackId", stackId);
+
+                using (var reader = selectCmd.ExecuteReader())
+                {
+                    if (!reader.HasRows)
+                    {
+                        Console.WriteLine("No Flash Cards found.");
+                        return;
+                    }
+
+                    Console.WriteLine("Flash Cards:");
+                    while (reader.Read())
+                    {
+                        string question = reader.GetString(0);
+                        string answer = reader.GetString(1);
+                        Console.WriteLine($"- {question}: {answer}");
+                    }
+                }
+
+                connection.Close();
+            }
+
+        }
+
         public void DisplayAllStacks()
         {
 

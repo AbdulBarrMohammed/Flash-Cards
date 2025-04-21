@@ -76,6 +76,9 @@ namespace FlashCards
         public void SelectStackItem(int stackId)
         {
             Console.WriteLine($"The name you choose has an id of {stackId}");
+
+            // Display all flashcards in selected stack
+            stackController.DisplayAllStackCards(stackId);
         }
     }
 }
