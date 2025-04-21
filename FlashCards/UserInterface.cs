@@ -65,6 +65,17 @@ namespace FlashCards
             var stackName = Console.ReadLine();
             Console.WriteLine(stackName);
 
+            // Get stack id from stackName
+            int stackId = stackController.GetStackId(stackName);
+
+            // Pass id to function to display stack
+            SelectStackItem(stackId);
+
+        }
+
+        public void SelectStackItem(int stackId)
+        {
+            Console.WriteLine($"The name you choose has an id of {stackId}");
         }
     }
 }

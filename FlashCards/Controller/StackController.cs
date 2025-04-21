@@ -26,6 +26,37 @@ namespace FlashCards.Controller
 
         }
 
+
+
+        public int GetStackId(string stackName)
+        {
+            using (var connection = new SqlConnection(MockDatabase.GetConnectionString()))
+            {
+                connection.Open();
+
+                var selectCmd = connection.CreateCommand();
+                selectCmd.CommandText = "SELECT Id FROM Stack WHERE Name = @StackName";
+
+                selectCmd.Parameters.AddWithValue("@StackName", stackName);
+
+                using (var reader = selectCmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return reader.GetInt32(0);
+                    }
+
+                    else {
+                        Console.WriteLine("Could not find a Stack with that name");
+                        return -1;
+                    }
+                }
+
+                connection.Close();
+            }
+
+        }
+
         public void DisplayAllStacks()
         {
 
