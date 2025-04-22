@@ -110,7 +110,7 @@ namespace FlashCards
                     EditFlashCard(stackId);
                     break;
                 case "D":
-                    DeleteFlashCard(stackId);
+                    RemoveFlashCard(stackId);
                     break;
             }
 
@@ -136,7 +136,7 @@ namespace FlashCards
 
         }
 
-        public void DeleteFlashCard(int stackId)
+        public void RemoveFlashCard(int stackId)
         {
 
         }
