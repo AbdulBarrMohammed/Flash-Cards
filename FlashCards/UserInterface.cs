@@ -107,7 +107,7 @@ namespace FlashCards
                     InsertFlashCard(stackId);
                     break;
                 case "E":
-                    EditFlashCard(stackId);
+                    EditFlashCard();
                     break;
                 case "D":
                     RemoveFlashCard();
@@ -142,9 +142,9 @@ namespace FlashCards
             flashCardController.DeleteFlashCard();
         }
 
-        public void EditFlashCard(int stackId)
+        public void EditFlashCard()
         {
-
+            flashCardController.UpdateFlashCard();
         }
     }
 }

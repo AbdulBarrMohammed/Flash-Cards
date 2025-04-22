@@ -32,6 +32,12 @@ namespace FlashCards.Controller
                     DeleteFlashCard();
                 }
 
+                else
+                {
+                    Console.WriteLine("\n Flashcard was successfully deleted");
+                    Console.WriteLine("\n Press any key to return to main menu\n");
+                }
+
 
             }
 
@@ -63,6 +69,33 @@ namespace FlashCards.Controller
 
         public void UpdateFlashCard()
         {
+            int id = 1;
+            string question = "";
+            string answer = "";
+
+            using (var connection = new SqlConnection(MockDatabase.GetConnectionString()))
+            {
+
+                connection.Open();
+                //Get new input for flashCards
+
+                var selectCmd = connection.CreateCommand();
+                // Insert updated code item properties to database
+                selectCmd.CommandText = @"UPDATE FlashCard SET Question = @question, answer = @answer WHERE Id = @Id";
+                selectCmd.Parameters.AddWithValue("@question", question);
+                selectCmd.Parameters.AddWithValue("@answer", answer);
+                selectCmd.Parameters.AddWithValue("@id", id);
+
+                // Runs the insert command
+                selectCmd.ExecuteNonQuery();
+
+
+                Console.WriteLine("Updated Successfully");
+
+                connection.Close();
+
+
+            }
 
         }
 
