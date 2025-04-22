@@ -107,8 +107,10 @@ namespace FlashCards
                     InsertFlashCard(stackId);
                     break;
                 case "E":
+                    EditFlashCard(stackId);
                     break;
                 case "D":
+                    DeleteFlashCard(stackId);
                     break;
             }
 
@@ -135,6 +137,11 @@ namespace FlashCards
         }
 
         public void DeleteFlashCard(int stackId)
+        {
+
+        }
+
+        public void EditFlashCard(int stackId)
         {
 
         }
