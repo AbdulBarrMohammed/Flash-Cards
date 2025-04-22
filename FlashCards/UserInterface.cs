@@ -85,8 +85,9 @@ namespace FlashCards
             Console.WriteLine("V to view all Flashcards in stack");
             Console.WriteLine("A to view X amount of cards in stack");
             Console.WriteLine("C to Create a Flashcard in current stack");
+            Console.WriteLine("E to Edit a Flashcard");
             Console.WriteLine("D to Delete a Flashcard");
-            Console.WriteLine("------------------------------------");
+            Console.WriteLine("------------------------------------\n");
 
             var option = Console.ReadLine();
             switch(option)
