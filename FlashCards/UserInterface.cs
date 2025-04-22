@@ -128,6 +128,11 @@ namespace FlashCards
             Console.WriteLine("------------------------------------");
 
             stackController.CreateFlashCard(stackId, question, answer);
+
+        }
+
+        public void DeleteFlashCard(int stackId)
+        {
             
         }
     }
