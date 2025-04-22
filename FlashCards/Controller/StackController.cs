@@ -79,6 +79,7 @@ namespace FlashCards.Controller
                     Console.WriteLine("Flash Cards:");
                     while (reader.Read())
                     {
+                        // insert reader params to new FlashCard obkject
                         string question = reader.GetString(0);
                         string answer = reader.GetString(1);
                         Console.WriteLine($"- {question}: {answer}");
@@ -118,6 +119,25 @@ namespace FlashCards.Controller
 
                 connection.Close();
             }
+        }
+
+        public void CreateFlashCard(int stackId, string question, string answer)
+        {
+
+            using (var connection = new SqlConnection(MockDatabase.GetConnectionString()))
+            {
+                connection.Open();
+
+                //Provide stackId of which flash card will belong to as well as question and answer
+                var selectCmd = connection.CreateCommand();
+                selectCmd.CommandText = $"INSERT INTO FlashCard(StackId, Question, Answer) VALUES(@stackId, @question, @answer)";
+                selectCmd.Parameters.AddWithValue("@squestion", question);
+                selectCmd.Parameters.AddWithValue("@answer", answer);
+                selectCmd.Parameters.AddWithValue("@stackId", stackId);
+
+                connection.Close();
+            }
+
         }
     }
 }

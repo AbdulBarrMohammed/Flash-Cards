@@ -101,6 +101,7 @@ namespace FlashCards
                 case "A":
                     break;
                 case "C":
+                    InsertFlashCard(stackId);
                     break;
                 case "E":
                     break;
@@ -113,6 +114,21 @@ namespace FlashCards
         public void DisplayAllFlashCards(int stackId)
         {
             stackController.DisplayAllStackCards(stackId);
+            Console.WriteLine("press 0 to exit");
+        }
+
+        public void InsertFlashCard(int stackId)
+        {
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine($"Enter flashcard question: \n");
+            var question = Console.ReadLine();
+
+            Console.WriteLine("Enter flashcard answer");
+            var answer = Console.ReadLine();
+            Console.WriteLine("------------------------------------");
+
+            var option = Console.ReadLine();
+            stackController.CreateFlashCard(stackId, question, answer);
         }
     }
 }
