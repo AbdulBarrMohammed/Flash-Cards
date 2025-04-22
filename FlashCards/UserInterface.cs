@@ -11,6 +11,7 @@ namespace FlashCards
     public class UserInterface
     {
         private StackController stackController = new();
+        private FlashCardController flashCardController = new();
         internal void MainMenu()
         {
             bool isOn = true;
@@ -127,13 +128,13 @@ namespace FlashCards
             var answer = Console.ReadLine();
             Console.WriteLine("------------------------------------");
 
-            stackController.CreateFlashCard(stackId, question, answer);
+            flashCardController.CreateFlashCard(stackId, question, answer);
 
         }
 
         public void DeleteFlashCard(int stackId)
         {
-            
+
         }
     }
 }
