@@ -127,7 +127,6 @@ namespace FlashCards
             var answer = Console.ReadLine();
             Console.WriteLine("------------------------------------");
 
-            var option = Console.ReadLine();
             stackController.CreateFlashCard(stackId, question, answer);
         }
     }
