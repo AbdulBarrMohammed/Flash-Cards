@@ -81,7 +81,8 @@ namespace FlashCards.Controller
             Console.WriteLine($"\nEnter new flashcard question: \n");
             var question = Console.ReadLine();
 
-            Console.WriteLine("\nEnter new flashcard answer\n");
+            Console.WriteLine("\nEnter new flashcard answer: \n");
+            Console.WriteLine("------------------------------------\n");
             var answer = Console.ReadLine();
 
             using (var connection = new SqlConnection(MockDatabase.GetConnectionString()))
@@ -95,7 +96,7 @@ namespace FlashCards.Controller
                 selectCmd.CommandText = @"UPDATE FlashCard SET Question = @question, answer = @answer WHERE Id = @Id";
                 selectCmd.Parameters.AddWithValue("@question", question);
                 selectCmd.Parameters.AddWithValue("@answer", answer);
-                selectCmd.Parameters.AddWithValue("@id", id);
+                selectCmd.Parameters.AddWithValue("@id", cardId);
 
                 // Runs the insert command
                 selectCmd.ExecuteNonQuery();
