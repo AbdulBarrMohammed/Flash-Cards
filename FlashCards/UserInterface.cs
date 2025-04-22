@@ -95,6 +95,7 @@ namespace FlashCards
                     MainMenu();
                     break;
                 case "X":
+                    ManageStacks();
                     break;
                 case "V":
                     DisplayAllFlashCards(stackId);
