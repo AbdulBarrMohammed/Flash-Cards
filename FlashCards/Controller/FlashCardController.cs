@@ -69,9 +69,20 @@ namespace FlashCards.Controller
 
         public void UpdateFlashCard()
         {
-            int id = 1;
-            string question = "";
-            string answer = "";
+
+            // Get flashcard id
+            Console.WriteLine($"\nEnter flashcard id to delete: \n");
+            string id = Console.ReadLine();
+            int cardId;
+            Int32.TryParse(id, out cardId);
+
+            // Get new flashcard questions and answers
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine($"\nEnter new flashcard question: \n");
+            var question = Console.ReadLine();
+
+            Console.WriteLine("\nEnter new flashcard answer\n");
+            var answer = Console.ReadLine();
 
             using (var connection = new SqlConnection(MockDatabase.GetConnectionString()))
             {
