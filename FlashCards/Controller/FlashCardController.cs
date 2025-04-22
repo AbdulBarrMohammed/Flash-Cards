@@ -10,8 +10,14 @@ namespace FlashCards.Controller
     public class FlashCardController
     {
 
-        public void DeleteFlashCard(int cardId)
+        public void DeleteFlashCard()
         {
+            // Get flashcard id
+            Console.WriteLine($"\nEnter flashcard id to delete: \n");
+            string id = Console.ReadLine();
+            int cardId;
+            Int32.TryParse(id, out cardId);
+
 
             using (var connection = new SqlConnection(MockDatabase.GetConnectionString())) {
                 connection.Open();
@@ -23,7 +29,7 @@ namespace FlashCards.Controller
                 if (rowCount == 0)
                 {
                     System.Console.WriteLine($"\n\nRecord with Id {cardId} doesn't exist. \n\n");
-                    DeleteFlashCard(cardId);
+                    DeleteFlashCard();
                 }
 
 

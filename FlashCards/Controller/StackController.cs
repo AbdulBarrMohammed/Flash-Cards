@@ -18,7 +18,7 @@ namespace FlashCards.Controller
 
         public void DeleteFromStack()
         {
-
+            
         }
 
         public void UpdateStack()
@@ -121,6 +121,6 @@ namespace FlashCards.Controller
             }
         }
 
-        
+
     }
 }
