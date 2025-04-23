@@ -13,6 +13,7 @@ namespace FlashCards
         private StackController stackController = new();
         private FlashCardController flashCardController = new();
         private StudySessionController studySessionController = new();
+
         internal void MainMenu()
         {
             bool isOn = true;
@@ -171,7 +172,7 @@ namespace FlashCards
 
         public void ViewStudySessionData()
         {
-
+            studySessionController.DisplayAllSessions();
         }
     }
 }

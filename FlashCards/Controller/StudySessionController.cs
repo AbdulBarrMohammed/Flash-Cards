@@ -41,7 +41,7 @@ namespace FlashCards.Controller
 
         }
 
-        public void DisplayAllSessions(int Id)
+        public void DisplayAllSessions()
         {
 
             using (var connection = new SqlConnection(MockDatabase.GetConnectionString()))
@@ -49,8 +49,8 @@ namespace FlashCards.Controller
                 connection.Open();
 
                 var selectCmd = connection.CreateCommand();
-                selectCmd.CommandText = "SELECT Id, StackId, Date, Score FROM StudySession WHERE Id = @Id";
-                selectCmd.Parameters.AddWithValue("@Id", Id);
+                selectCmd.CommandText = "SELECT Id, StackId, Date, Score FROM StudySession";
+                //selectCmd.Parameters.AddWithValue("@Id", Id);
 
                 var studySessionDataList = new List<StudySession>();
 
