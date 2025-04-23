@@ -164,7 +164,9 @@ namespace FlashCards
 
         public void Study(string stackName)
         {
-
+            // Get stack id from stackName
+            int stackId = stackController.GetStackId(stackName);
+            studySessionController.StartStudySession(stackId);
         }
     }
 }

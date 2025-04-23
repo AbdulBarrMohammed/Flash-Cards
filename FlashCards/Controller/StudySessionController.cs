@@ -48,14 +48,24 @@ namespace FlashCards.Controller
                     Console.WriteLine("Flash Cards:");
                     while (reader.Read())
                     {
+                        // Insert new flashcard object to flashcards stack list
                         flashCardStack.Add(
-                            new FlashCard(1, stackId, reader.GetString(0), reader.GetString(1))
+                            new FlashCard(reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2), reader.GetString(3))
                         );
 
+
+                        // Loop through flashcards stack list
+                        foreach(var card in flashCardStack)
+                        {
+                            Console.WriteLine($"\nQuestion: {card.Question}\n");
+                            Console.WriteLine($"\nQuestion: {card.Answer}\n");
+                        }
+
+                        /*
                         // insert reader params to new FlashCard obkject
                         string question = reader.GetString(0);
                         string answer = reader.GetString(1);
-                        Console.WriteLine($"- {question}: {answer}");
+                        Console.WriteLine($"- {question}: {answer}"); */
                     }
                 }
 
