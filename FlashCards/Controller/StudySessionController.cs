@@ -45,6 +45,8 @@ namespace FlashCards.Controller
                         return;
                     }
 
+                    int currentScore = 0;
+
                     Console.WriteLine("Flash Cards:");
                     while (reader.Read())
                     {
@@ -55,11 +57,22 @@ namespace FlashCards.Controller
 
 
                         // Loop through flashcards stack list
-                        Console.WriteLine("Study Session Cards: \n");
+                        Console.WriteLine("\n Study Session Cards: \n");
                         foreach(var card in flashCardStack)
                         {
+                            Console.WriteLine("\n-------------------------------\n");
                             Console.WriteLine($"\nQuestion: {card.Question}\n");
-                            Console.WriteLine($"\nQuestion: {card.Answer}\n");
+                            Console.WriteLine("\n-------------------------------\n");
+                            Console.WriteLine("\n\nInput your answer to this card\n\n");
+                            var userAnswer = Console.ReadLine();
+
+                            if (userAnswer.ToLower() == card.Answer.ToLower()) {
+                                Console.WriteLine("\nYour answer was correct !\n");
+                                currentScore += 1;
+                            }
+                            else {
+                                Console.WriteLine("\nYour answer was wrong !\n");
+                            }
                         }
 
                         /*
@@ -68,6 +81,8 @@ namespace FlashCards.Controller
                         string answer = reader.GetString(1);
                         Console.WriteLine($"- {question}: {answer}"); */
                     }
+
+                    Console.WriteLine($"Your score is {currentScore}/{flashCardStack.Count}");
                 }
 
                 connection.Close();
