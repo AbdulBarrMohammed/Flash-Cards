@@ -43,7 +43,7 @@ namespace FlashCards
                         StudyStackMenu();
                         break;
                     case MenuAction.view_study_session_data:
-                        Console.WriteLine("View study session was chosen");
+                        ViewStudySessionData();
                         break;
                 }
 
@@ -167,6 +167,11 @@ namespace FlashCards
             // Get stack id from stackName
             int stackId = stackController.GetStackId(stackName);
             studySessionController.StartStudySession(stackId);
+        }
+
+        public void ViewStudySessionData()
+        {
+
         }
     }
 }
