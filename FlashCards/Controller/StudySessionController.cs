@@ -33,7 +33,7 @@ namespace FlashCards.Controller
                 connection.Open();
 
                 var selectCmd = connection.CreateCommand();
-                selectCmd.CommandText = "SELECT Question, Answer FROM FlashCard WHERE StackId = @stackId";
+                selectCmd.CommandText = "SELECT Id, StackId, Question, Answer FROM FlashCard WHERE StackId = @stackId";
                 selectCmd.Parameters.AddWithValue("@stackId", stackId);
                 var flashCardStack = new List<FlashCard>();
 
@@ -55,6 +55,7 @@ namespace FlashCards.Controller
 
 
                         // Loop through flashcards stack list
+                        Console.WriteLine("Study Session Cards: \n");
                         foreach(var card in flashCardStack)
                         {
                             Console.WriteLine($"\nQuestion: {card.Question}\n");
