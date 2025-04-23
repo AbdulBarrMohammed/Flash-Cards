@@ -159,6 +159,12 @@ namespace FlashCards
             Console.WriteLine("Or input 0 to exit input");
             Console.WriteLine("---------------------------");
             var stackName = Console.ReadLine();
+            Study(stackName);
+        }
+
+        public void Study(string stackName)
+        {
+
         }
     }
 }
