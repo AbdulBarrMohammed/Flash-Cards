@@ -74,15 +74,16 @@ namespace FlashCards.Controller
 
 
                     // Loop through flashcards stack list
-                        Console.WriteLine("\n Study Session Cards: \n");
+                        Console.WriteLine("\nStudy Session Cards: \n");
                         foreach(var s in studySessionDataList)
                         {
-                            Console.WriteLine("\n-------------------------------\n");
+                            Console.WriteLine("-------------------------------");
                             Console.WriteLine($"Date: {s.Date}");
                             Console.WriteLine($"Score: {s.Score}");
-                            Console.WriteLine("\n-------------------------------\n");
+                            Console.WriteLine("-------------------------------\n");
 
                         }
+
 
                 }
 
