@@ -10,7 +10,7 @@ namespace FlashCards.Controller
 {
     public class StudySessionController
     {
-        public void InsertSession(int score)
+        public void InsertSession(int score, int stackId)
         {
             using (var connection = new SqlConnection(MockDatabase.GetConnectionString()))
             {
@@ -18,12 +18,13 @@ namespace FlashCards.Controller
 
                 var selectCmd = connection.CreateCommand();
                 selectCmd.CommandText = @"
-                    INSERT INTO StudySession (Date, Score)
-                    VALUES (@Date, @Score);";
+                    INSERT INTO StudySession (StackId, Date, Score)
+                    VALUES (@StackId, @Date, @Score);";
 
                 string date = DateTime.Now.ToString("MMMM dd, yyyy");
                 selectCmd.Parameters.AddWithValue("@Date", date);
                 selectCmd.Parameters.AddWithValue("@Score", score);
+                selectCmd.Parameters.AddWithValue("@StackId", stackId);
 
                 selectCmd.ExecuteNonQuery();
 
@@ -98,7 +99,7 @@ namespace FlashCards.Controller
                     }
 
                     // Insert study session into database
-                    InsertSession(currentScore);
+                    InsertSession(currentScore, stackId);
                     Console.WriteLine($"Your score is {currentScore}/{flashCardStack.Count}");
                 }
 
