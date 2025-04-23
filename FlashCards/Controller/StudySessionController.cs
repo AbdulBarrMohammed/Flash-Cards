@@ -78,10 +78,9 @@ namespace FlashCards.Controller
                         foreach(var s in studySessionDataList)
                         {
                             Console.WriteLine("\n-------------------------------\n");
-                            Console.WriteLine($"\nDate: {s.Date}\n");
-                            Console.WriteLine($"\nScore: {s.Score}\n");
+                            Console.WriteLine($"Date: {s.Date}");
+                            Console.WriteLine($"Score: {s.Score}");
                             Console.WriteLine("\n-------------------------------\n");
-                            Console.WriteLine("\n\nInput your answer to this card\n\n");
 
                         }
 
@@ -130,7 +129,7 @@ namespace FlashCards.Controller
                         foreach(var card in flashCardStack)
                         {
                             Console.WriteLine("\n-------------------------------\n");
-                            Console.WriteLine($"\nQuestion: {card.Question}\n");
+                            Console.WriteLine($"Question: {card.Question}");
                             Console.WriteLine("\n-------------------------------\n");
                             Console.WriteLine("\n\nInput your answer to this card\n\n");
                             var userAnswer = Console.ReadLine();
