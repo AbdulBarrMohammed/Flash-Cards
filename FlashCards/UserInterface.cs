@@ -12,6 +12,7 @@ namespace FlashCards
     {
         private StackController stackController = new();
         private FlashCardController flashCardController = new();
+        private StudySessionController studySessionController = new();
         internal void MainMenu()
         {
             bool isOn = true;
@@ -36,8 +37,10 @@ namespace FlashCards
                         ManageStacks();
                         break;
                     case MenuAction.Manage_Flashcards:
-                        Console.WriteLine("Manage Flashcards was chosen");
                         //ManageFlashCards();
+                        break;
+                    case MenuAction.Study:
+                        StudyStackMenu();
                         break;
                     case MenuAction.view_study_session_data:
                         Console.WriteLine("View study session was chosen");
@@ -145,6 +148,17 @@ namespace FlashCards
         public void EditFlashCard()
         {
             flashCardController.UpdateFlashCard();
+        }
+
+        public void StudyStackMenu()
+        {
+            // Display different stacks to user
+            stackController.DisplayAllStacks();
+            Console.WriteLine("---------------------------");
+            Console.WriteLine("Input a current stack name to study");
+            Console.WriteLine("Or input 0 to exit input");
+            Console.WriteLine("---------------------------");
+            var stackName = Console.ReadLine();
         }
     }
 }

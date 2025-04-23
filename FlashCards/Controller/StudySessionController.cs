@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace FlashCards.Controller
 {
-    public class StudySession
+    public class StudySessionController
     {
         public void InsertSession()
         {
