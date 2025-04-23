@@ -10,9 +10,22 @@ namespace FlashCards.Controller
 {
     public class StudySessionController
     {
-        public void InsertSession()
+        public void InsertSession(int score)
         {
+            using (var connection = new SqlConnection(MockDatabase.GetConnectionString()))
+            {
+                connection.Open();
 
+                var selectCmd = connection.CreateCommand();
+                selectCmd.CommandText = @"
+                    INSERT INTO StudySession (Date, Score)
+                    VALUES (@Date, @Score);";
+
+                string date = DateTime.Now.ToString("MMMM dd, yyyy");
+                selectCmd.Parameters.AddWithValue("@Date", date);
+                selectCmd.Parameters.AddWithValue("@Score", score);
+
+            }
         }
 
         public void DeleteSession()
@@ -75,13 +88,10 @@ namespace FlashCards.Controller
                             }
                         }
 
-                        /*
-                        // insert reader params to new FlashCard obkject
-                        string question = reader.GetString(0);
-                        string answer = reader.GetString(1);
-                        Console.WriteLine($"- {question}: {answer}"); */
                     }
 
+                    // Insert study session into database
+                    InsertSession(currentScore);
                     Console.WriteLine($"Your score is {currentScore}/{flashCardStack.Count}");
                 }
 
