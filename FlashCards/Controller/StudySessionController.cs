@@ -41,8 +41,64 @@ namespace FlashCards.Controller
 
         }
 
-        public void DisplayAllSessions()
+        public void DisplayAllSessions(int Id)
         {
+
+            using (var connection = new SqlConnection(MockDatabase.GetConnectionString()))
+            {
+                connection.Open();
+
+                var selectCmd = connection.CreateCommand();
+                selectCmd.CommandText = "SELECT Id, StackId, Date, Score FROM StudySession WHERE Id = @Id";
+                selectCmd.Parameters.AddWithValue("@Id", Id);
+
+                var studySessionDataList = new List<StudySession>();
+
+                using (var reader = selectCmd.ExecuteReader())
+                {
+                    if (!reader.HasRows)
+                    {
+                        Console.WriteLine("No Study Sessions found.");
+                        return;
+                    }
+
+                    Console.WriteLine("Study Sessions:");
+                    while (reader.Read())
+                    {
+                        // Insert new flashcard object to flashcards stack list
+                        studySessionDataList.Add(
+                            new StudySession(reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2), reader.GetInt32(3))
+                        );
+
+                    }
+
+
+                    // Loop through flashcards stack list
+                        Console.WriteLine("\n Study Session Cards: \n");
+                        foreach(var card in flashCardStack)
+                        {
+                            Console.WriteLine("\n-------------------------------\n");
+                            Console.WriteLine($"\nQuestion: {card.Question}\n");
+                            Console.WriteLine("\n-------------------------------\n");
+                            Console.WriteLine("\n\nInput your answer to this card\n\n");
+                            var userAnswer = Console.ReadLine();
+
+                            if (userAnswer.ToLower() == card.Answer.ToLower()) {
+                                Console.WriteLine("\nYour answer was correct !\n");
+                                currentScore += 1;
+                            }
+                            else {
+                                Console.WriteLine("\nYour answer was wrong !\n");
+                            }
+                        }
+
+                    // Insert study session into database
+                    InsertSession(currentScore, stackId);
+                    Console.WriteLine($"Your score is {currentScore}/{flashCardStack.Count}");
+                }
+
+                connection.Close();
+            }
 
         }
 
