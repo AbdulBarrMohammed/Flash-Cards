@@ -75,26 +75,16 @@ namespace FlashCards.Controller
 
                     // Loop through flashcards stack list
                         Console.WriteLine("\n Study Session Cards: \n");
-                        foreach(var card in flashCardStack)
+                        foreach(var s in studySessionDataList)
                         {
                             Console.WriteLine("\n-------------------------------\n");
-                            Console.WriteLine($"\nQuestion: {card.Question}\n");
+                            Console.WriteLine($"\nDate: {s.Date}\n");
+                            Console.WriteLine($"\nScore: {s.Score}\n");
                             Console.WriteLine("\n-------------------------------\n");
                             Console.WriteLine("\n\nInput your answer to this card\n\n");
-                            var userAnswer = Console.ReadLine();
 
-                            if (userAnswer.ToLower() == card.Answer.ToLower()) {
-                                Console.WriteLine("\nYour answer was correct !\n");
-                                currentScore += 1;
-                            }
-                            else {
-                                Console.WriteLine("\nYour answer was wrong !\n");
-                            }
                         }
 
-                    // Insert study session into database
-                    InsertSession(currentScore, stackId);
-                    Console.WriteLine($"Your score is {currentScore}/{flashCardStack.Count}");
                 }
 
                 connection.Close();
