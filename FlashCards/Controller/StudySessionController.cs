@@ -25,7 +25,14 @@ namespace FlashCards.Controller
                 selectCmd.Parameters.AddWithValue("@Date", date);
                 selectCmd.Parameters.AddWithValue("@Score", score);
 
+                selectCmd.ExecuteNonQuery();
+
+                connection.Close();
+
             }
+
+
+
         }
 
         public void DeleteSession()
