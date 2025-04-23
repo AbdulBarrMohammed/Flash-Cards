@@ -76,8 +76,10 @@ namespace FlashCards.Controller
                             new FlashCard(reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2), reader.GetString(3))
                         );
 
+                    }
 
-                        // Loop through flashcards stack list
+
+                    // Loop through flashcards stack list
                         Console.WriteLine("\n Study Session Cards: \n");
                         foreach(var card in flashCardStack)
                         {
@@ -95,8 +97,6 @@ namespace FlashCards.Controller
                                 Console.WriteLine("\nYour answer was wrong !\n");
                             }
                         }
-
-                    }
 
                     // Insert study session into database
                     InsertSession(currentScore, stackId);
