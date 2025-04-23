@@ -11,5 +11,7 @@ namespace FlashCards.Models
         public string Name {get; set;}
 
         public FlashCard[] FlashCards {get; set;}
+
+        public StudySession[] StudySessions {get; set;}
     }
 }
