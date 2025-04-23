@@ -155,7 +155,7 @@ namespace FlashCards
             // Display different stacks to user
             stackController.DisplayAllStacks();
             Console.WriteLine("---------------------------");
-            Console.WriteLine("Input a current stack name to study");
+            Console.WriteLine("Choose a stack of flashcards to interact with: ");
             Console.WriteLine("Or input 0 to exit input");
             Console.WriteLine("---------------------------");
             var stackName = Console.ReadLine();
