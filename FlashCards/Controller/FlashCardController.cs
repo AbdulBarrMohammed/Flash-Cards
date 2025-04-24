@@ -111,7 +111,7 @@ namespace FlashCards.Controller
 
         }
 
-        public void DisplayAllFlashCards()
+        public void DisplayFlashCard(int cardId)
         {
 
         }

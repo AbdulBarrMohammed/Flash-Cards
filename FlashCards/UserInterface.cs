@@ -123,7 +123,14 @@ namespace FlashCards
         public void DisplayAllFlashCards(int stackId)
         {
             stackController.DisplayAllStackCards(stackId);
+            Console.WriteLine("Select card id to interact with card");
             Console.WriteLine("press 0 to exit");
+
+            //Get user input for flashcard selection
+            var id = Console.ReadLine();
+            int cardId;
+            Int32.TryParse(id, out cardId);
+            ViewFlashCard(cardId);
         }
 
         public void InsertFlashCard(int stackId)
@@ -173,6 +180,11 @@ namespace FlashCards
         public void ViewStudySessionData()
         {
             studySessionController.DisplayAllSessions();
+        }
+
+        public void ViewFlashCard(int id)
+        {
+            flashCardController.DisplayFlashCard(id);
         }
     }
 }
