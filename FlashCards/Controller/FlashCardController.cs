@@ -4,6 +4,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using FlashCards.Data;
+using FlashCards.Dto;
+using FlashCards.Models;
 
 namespace FlashCards.Controller
 {
@@ -101,11 +103,9 @@ namespace FlashCards.Controller
                 // Runs the insert command
                 selectCmd.ExecuteNonQuery();
 
-
                 Console.WriteLine("Updated Successfully");
 
                 connection.Close();
-
 
             }
 
@@ -113,7 +113,33 @@ namespace FlashCards.Controller
 
         public void DisplayFlashCard(int cardId)
         {
+            using (var connection = new SqlConnection(MockDatabase.GetConnectionString()))
+            {
 
+                connection.Open();
+
+                var selectCmd = connection.CreateCommand();
+
+                // Select flash card from sql database
+                selectCmd.CommandText = @"Select from FlashCard WHERE Id = @Id";
+                selectCmd.Parameters.AddWithValue("@id", cardId);
+
+                using (var reader = selectCmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        var flashCard = new FlashCardDto(reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
+                        Console.WriteLine($"\nHere is the card you selected: \n");
+                        Console.WriteLine($"Question: {flashCard.Question} \n Answer: {flashCard.Answer}");
+                    }
+                }
+
+
+
+
+                connection.Close();
+
+            }
         }
     }
 }
