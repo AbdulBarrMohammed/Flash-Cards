@@ -161,7 +161,7 @@ namespace FlashCards.Controller
                     Console.WriteLine("FlashCards:");
                     while (reader.Read())
                     {
-                        int id = reader.GetInt32(1);
+                        int id = reader.GetInt32(0);
                         string question = reader.GetString(1);
                         string answer = reader.GetString(2);
                         Console.WriteLine($"- {id} {question} {answer}");

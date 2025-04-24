@@ -179,6 +179,7 @@ namespace FlashCards
 
         public void ViewFlashCards()
         {
+            Console.WriteLine("Input an Id of a flashcard");
             flashCardController.DisplayAllFlashCards();
         }
     }
