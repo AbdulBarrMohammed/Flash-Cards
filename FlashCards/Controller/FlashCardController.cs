@@ -111,7 +111,7 @@ namespace FlashCards.Controller
 
         }
 
-        public void DisplayFlashCard(int cardId)
+        public void DisplayFlashCard()
         {
             using (var connection = new SqlConnection(MockDatabase.GetConnectionString()))
             {
@@ -121,8 +121,7 @@ namespace FlashCards.Controller
                 var selectCmd = connection.CreateCommand();
 
                 // Select flash card from sql database
-                selectCmd.CommandText = @"Select from FlashCard WHERE Id = @Id";
-                selectCmd.Parameters.AddWithValue("@id", cardId);
+                selectCmd.CommandText = @"Select from FlashCard";
 
                 using (var reader = selectCmd.ExecuteReader())
                 {
@@ -139,6 +138,37 @@ namespace FlashCards.Controller
 
                 connection.Close();
 
+            }
+        }
+
+        public void DisplayAllFlashCards()
+        {
+            using (var connection = new SqlConnection(MockDatabase.GetConnectionString()))
+            {
+                connection.Open();
+
+                var selectCmd = connection.CreateCommand();
+                selectCmd.CommandText = "SELECT Id, Question, Answer FROM FlashCard";
+
+                using (var reader = selectCmd.ExecuteReader())
+                {
+                    if (!reader.HasRows)
+                    {
+                        Console.WriteLine("No cards found.");
+                        return;
+                    }
+
+                    Console.WriteLine("FlashCards:");
+                    while (reader.Read())
+                    {
+                        int id = reader.GetInt32(1);
+                        string question = reader.GetString(1);
+                        string answer = reader.GetString(2);
+                        Console.WriteLine($"- {id} {question} {answer}");
+                    }
+                }
+
+                connection.Close();
             }
         }
     }

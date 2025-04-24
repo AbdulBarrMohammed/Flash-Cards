@@ -38,7 +38,7 @@ namespace FlashCards
                         ManageStacks();
                         break;
                     case MenuAction.Manage_Flashcards:
-                        //ManageFlashCards();
+                        ViewFlashCards();
                         break;
                     case MenuAction.Study:
                         StudyStackMenu();
@@ -103,7 +103,7 @@ namespace FlashCards
                     ManageStacks();
                     break;
                 case "V":
-                    DisplayAllFlashCards(stackId);
+                    DisplayAllFlashCardsInStack(stackId);
                     break;
                 case "A":
                     break;
@@ -120,17 +120,12 @@ namespace FlashCards
 
         }
 
-        public void DisplayAllFlashCards(int stackId)
+        public void DisplayAllFlashCardsInStack(int stackId)
         {
             stackController.DisplayAllStackCards(stackId);
             Console.WriteLine("Select card id to interact with card");
             Console.WriteLine("press 0 to exit");
 
-            //Get user input for flashcard selection
-            var id = Console.ReadLine();
-            int cardId;
-            Int32.TryParse(id, out cardId);
-            ViewFlashCard(cardId);
         }
 
         public void InsertFlashCard(int stackId)
@@ -182,9 +177,9 @@ namespace FlashCards
             studySessionController.DisplayAllSessions();
         }
 
-        public void ViewFlashCard(int id)
+        public void ViewFlashCards()
         {
-            flashCardController.DisplayFlashCard(id);
+            flashCardController.DisplayAllFlashCards();
         }
     }
 }
