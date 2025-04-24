@@ -181,6 +181,17 @@ namespace FlashCards
         {
             Console.WriteLine("Input an Id of a flashcard");
             flashCardController.DisplayAllFlashCards();
+            var id = Console.ReadLine();
+            int cardId;
+            Int32.TryParse(id, out cardId);
+            SelectFlashCard(cardId);
+
+
+        }
+
+        public void SelectFlashCard(int id)
+        {
+            flashCardController.DisplayFlashCard(id);
         }
     }
 }
