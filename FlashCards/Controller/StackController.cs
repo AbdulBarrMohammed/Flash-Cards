@@ -11,9 +11,25 @@ namespace FlashCards.Controller
     public class StackController
     {
 
-        public void InsertToStack(int cardId)
+        public void InsertToStack(string stackName)
         {
 
+            using (var connection = new SqlConnection(MockDatabase.GetConnectionString()))
+            {
+                connection.Open();
+
+                // Insert new Stack
+                var selectCmd = connection.CreateCommand();
+                selectCmd.CommandText = @"INSERT INTO Stack (Name) VALUES (@stackName);";
+                selectCmd.Parameters.AddWithValue("@stackName", stackName);
+
+                // Runs the insert command
+                selectCmd.ExecuteNonQuery();
+
+                Console.WriteLine("Successfully created new stack");
+
+                connection.Close();
+            }
         }
 
         public void DeleteFromStack(int stackId)

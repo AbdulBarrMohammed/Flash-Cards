@@ -237,13 +237,11 @@ namespace FlashCards
         {
             stackController.DisplayAllStacks();
             Console.WriteLine("---------------------------");
-            Console.WriteLine("Choose a stack id to delete: ");
+            Console.WriteLine("Add name of new stack: ");
             Console.WriteLine("Or input 0 to exit input");
             Console.WriteLine("---------------------------");
-            var stackId = Console.ReadLine();
-            int cardId;
-            Int32.TryParse(stackId, out cardId);
-            stackController.InsertToStack(cardId);
+            var stackName = Console.ReadLine();
+            stackController.InsertToStack(stackName);
         }
     }
 }
