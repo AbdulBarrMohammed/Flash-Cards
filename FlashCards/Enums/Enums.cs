@@ -12,6 +12,9 @@ namespace FlashCards.Enums
             Exit,
             Manage_Stacks,
             Manage_Flashcards,
+            Add_Stack,
+            Delete_Stack,
+            Edit_Stack,
             Study,
             view_study_session_data
         }

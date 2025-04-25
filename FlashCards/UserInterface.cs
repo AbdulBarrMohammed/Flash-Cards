@@ -40,6 +40,15 @@ namespace FlashCards
                     case MenuAction.Manage_Flashcards:
                         ViewFlashCards();
                         break;
+                    case MenuAction.Delete_Stack:
+                        //StudyStackMenu();
+                        break;
+                    case MenuAction.Edit_Stack:
+                        //StudyStackMenu();
+                        break;
+                    case MenuAction.Add_Stack:
+                        //StudyStackMenu();
+                        break;
                     case MenuAction.Study:
                         StudyStackMenu();
                         break;
@@ -192,6 +201,11 @@ namespace FlashCards
         public void SelectFlashCard(int id)
         {
             flashCardController.DisplayFlashCard(id);
+        }
+
+        public void DeleteStack()
+        {
+            
         }
     }
 }
