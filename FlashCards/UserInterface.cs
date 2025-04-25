@@ -235,7 +235,6 @@ namespace FlashCards
 
         public void AddStack()
         {
-            stackController.DisplayAllStacks();
             Console.WriteLine("---------------------------");
             Console.WriteLine("Add name of new stack: ");
             Console.WriteLine("Or input 0 to exit input");

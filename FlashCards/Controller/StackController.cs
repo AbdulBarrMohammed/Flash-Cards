@@ -39,6 +39,33 @@ namespace FlashCards.Controller
 
         public void UpdateStack(int stackId)
         {
+            Console.WriteLine("---------------------------");
+            Console.WriteLine("Add new name of stack: ");
+            Console.WriteLine("Or input 0 to exit input");
+            Console.WriteLine("---------------------------");
+            var newStackName = Console.ReadLine();
+
+            using (var connection = new SqlConnection(MockDatabase.GetConnectionString()))
+            {
+
+                connection.Open();
+
+
+                var selectCmd = connection.CreateCommand();
+                // Insert updated code item properties to database
+                selectCmd.CommandText = @"UPDATE Stack SET Name = @name WHERE Id = @id";
+                selectCmd.Parameters.AddWithValue("@name", newStackName);
+                selectCmd.Parameters.AddWithValue("@id", stackId);
+
+                // Runs the insert command
+                selectCmd.ExecuteNonQuery();
+
+                Console.WriteLine("Updated Stack Successfully");
+
+                connection.Close();
+
+            }
+
 
         }
 
