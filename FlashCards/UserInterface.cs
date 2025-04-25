@@ -41,13 +41,13 @@ namespace FlashCards
                         ViewFlashCards();
                         break;
                     case MenuAction.Delete_Stack:
-                        //StudyStackMenu();
+                        DeleteStack();
                         break;
                     case MenuAction.Edit_Stack:
-                        //StudyStackMenu();
+                        EditStack();
                         break;
                     case MenuAction.Add_Stack:
-                        //StudyStackMenu();
+                        AddStack();
                         break;
                     case MenuAction.Study:
                         StudyStackMenu();
@@ -205,7 +205,17 @@ namespace FlashCards
 
         public void DeleteStack()
         {
-            
+
+        }
+
+        public void EditStack()
+        {
+
+        }
+
+        public void AddStack()
+        {
+
         }
     }
 }
