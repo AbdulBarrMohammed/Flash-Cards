@@ -38,6 +38,7 @@ namespace FlashCards
                         ManageStacks();
                         break;
                     case MenuAction.Manage_Flashcards:
+                        //ManageFlashCards();
                         ViewFlashCards();
                         break;
                     case MenuAction.Delete_Stack:
@@ -110,6 +111,7 @@ namespace FlashCards
                     break;
                 case "X":
                     ManageStacks();
+                    //ManageFlashCards();
                     break;
                 case "V":
                     DisplayAllFlashCardsInStack(stackId);
@@ -206,16 +208,42 @@ namespace FlashCards
         public void DeleteStack()
         {
 
+            stackController.DisplayAllStacks();
+            Console.WriteLine("---------------------------");
+            Console.WriteLine("Choose a stack id to delete: ");
+            Console.WriteLine("Or input 0 to exit input");
+            Console.WriteLine("---------------------------");
+            var stackId = Console.ReadLine();
+            int cardId;
+            Int32.TryParse(stackId, out cardId);
+            stackController.DeleteFromStack(cardId);
+
         }
 
         public void EditStack()
         {
-
+            stackController.DisplayAllStacks();
+            Console.WriteLine("---------------------------");
+            Console.WriteLine("Choose a stack id to edit: ");
+            Console.WriteLine("Or input 0 to exit input");
+            Console.WriteLine("---------------------------");
+            var stackId = Console.ReadLine();
+            int cardId;
+            Int32.TryParse(stackId, out cardId);
+            stackController.UpdateStack(cardId);
         }
 
         public void AddStack()
         {
-
+            stackController.DisplayAllStacks();
+            Console.WriteLine("---------------------------");
+            Console.WriteLine("Choose a stack id to delete: ");
+            Console.WriteLine("Or input 0 to exit input");
+            Console.WriteLine("---------------------------");
+            var stackId = Console.ReadLine();
+            int cardId;
+            Int32.TryParse(stackId, out cardId);
+            stackController.InsertToStack(cardId);
         }
     }
 }

@@ -11,17 +11,17 @@ namespace FlashCards.Controller
     public class StackController
     {
 
-        public void InsertToStack()
+        public void InsertToStack(int cardId)
         {
 
         }
 
-        public void DeleteFromStack()
+        public void DeleteFromStack(int stackId)
         {
-            
+
         }
 
-        public void UpdateStack()
+        public void UpdateStack(int stackId)
         {
 
         }
