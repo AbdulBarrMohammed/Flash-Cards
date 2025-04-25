@@ -34,6 +34,27 @@ namespace FlashCards.Controller
 
         public void DeleteFromStack(int stackId)
         {
+            using (var connection = new SqlConnection(MockDatabase.GetConnectionString())) {
+                connection.Open();
+                var tableCmd = connection.CreateCommand();
+                tableCmd.CommandText = $"DELETE from Stack WHERE Id = @stackId";
+                tableCmd.Parameters.AddWithValue("@stackId", stackId);
+
+                int rowCount = tableCmd.ExecuteNonQuery();
+                if (rowCount == 0)
+                {
+                    System.Console.WriteLine($"\n\nRecord with Id {stackId} doesn't exist. \n\n");
+                    DeleteFromStack(stackId);
+                }
+
+                else
+                {
+                    Console.WriteLine("\n Stack was successfully deleted");
+                    Console.WriteLine("\n Press any key to return to main menu\n");
+                }
+
+
+            }
 
         }
 
