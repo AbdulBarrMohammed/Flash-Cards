@@ -11,8 +11,13 @@ namespace FlashCards.Controller
     public class StackController
     {
 
-        public void InsertToStack(string stackName)
+        public void InsertToStack()
         {
+            Console.WriteLine("---------------------------");
+            Console.WriteLine("Add name of new stack: ");
+            Console.WriteLine("Or input 0 to exit input");
+            Console.WriteLine("---------------------------");
+            var stackName = Console.ReadLine();
 
             using (var connection = new SqlConnection(MockDatabase.GetConnectionString()))
             {

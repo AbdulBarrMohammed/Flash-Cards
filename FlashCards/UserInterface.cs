@@ -233,12 +233,7 @@ namespace FlashCards
 
         public void AddStack()
         {
-            Console.WriteLine("---------------------------");
-            Console.WriteLine("Add name of new stack: ");
-            Console.WriteLine("Or input 0 to exit input");
-            Console.WriteLine("---------------------------");
-            var stackName = Console.ReadLine();
-            stackController.InsertToStack(stackName);
+            stackController.InsertToStack();
         }
     }
 }
