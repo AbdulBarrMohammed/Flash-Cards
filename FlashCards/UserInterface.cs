@@ -98,7 +98,6 @@ namespace FlashCards
 
                 Console.WriteLine("------------------------------------");
                 Console.WriteLine($"Current working stack: {stackName}\n\n");
-
                 Console.WriteLine("O to return to main menu");
                 Console.WriteLine("X to change current stack");
                 Console.WriteLine("V to view all Flashcards in stack");
@@ -116,7 +115,6 @@ namespace FlashCards
                         break;
                     case "X":
                         ManageStacks();
-                        //ManageFlashCards();
                         break;
                     case "V":
                         DisplayAllFlashCardsInStack(stackId);
@@ -148,15 +146,8 @@ namespace FlashCards
 
         public void InsertFlashCard(int stackId)
         {
-            Console.WriteLine("------------------------------------");
-            Console.WriteLine($"Enter flashcard question: \n");
-            var question = Console.ReadLine();
 
-            Console.WriteLine("Enter flashcard answer");
-            var answer = Console.ReadLine();
-            Console.WriteLine("------------------------------------");
-
-            flashCardController.CreateFlashCard(stackId, question, answer);
+            flashCardController.CreateFlashCard(stackId);
 
         }
 

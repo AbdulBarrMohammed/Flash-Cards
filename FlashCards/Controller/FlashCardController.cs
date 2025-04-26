@@ -45,8 +45,17 @@ namespace FlashCards.Controller
 
         }
 
-        public void CreateFlashCard(int stackId, string question, string answer)
+        public void CreateFlashCard(int stackId)
         {
+
+            // Get user input for new flashcard
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine($"Enter flashcard question: \n");
+            var question = Console.ReadLine();
+
+            Console.WriteLine("Enter flashcard answer");
+            var answer = Console.ReadLine();
+            Console.WriteLine("------------------------------------");
 
             using (var connection = new SqlConnection(MockDatabase.GetConnectionString()))
             {
