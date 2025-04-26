@@ -91,43 +91,50 @@ namespace FlashCards
             // Get stack id from stackName
             int stackId = stackController.GetStackId(stackName);
 
-            Console.WriteLine("------------------------------------");
-            Console.WriteLine($"Current working stack: {stackName}\n\n");
-
-            Console.WriteLine("O to return to main menu");
-            Console.WriteLine("X to change current stack");
-            Console.WriteLine("V to view all Flashcards in stack");
-            Console.WriteLine("A to view X amount of cards in stack");
-            Console.WriteLine("C to Create a Flashcard in current stack");
-            Console.WriteLine("E to Edit a Flashcard");
-            Console.WriteLine("D to Delete a Flashcard");
-            Console.WriteLine("------------------------------------\n");
-
-            var option = Console.ReadLine();
-            switch(option)
+            // if stackId is returened to be -1 then ask user to input another stack name
+            if (stackId == -1) ManageStacks();
+            else
             {
-                case "O":
-                    MainMenu();
-                    break;
-                case "X":
-                    ManageStacks();
-                    //ManageFlashCards();
-                    break;
-                case "V":
-                    DisplayAllFlashCardsInStack(stackId);
-                    break;
-                case "A":
-                    break;
-                case "C":
-                    InsertFlashCard(stackId);
-                    break;
-                case "E":
-                    EditFlashCard();
-                    break;
-                case "D":
-                    RemoveFlashCard();
-                    break;
+
+                Console.WriteLine("------------------------------------");
+                Console.WriteLine($"Current working stack: {stackName}\n\n");
+
+                Console.WriteLine("O to return to main menu");
+                Console.WriteLine("X to change current stack");
+                Console.WriteLine("V to view all Flashcards in stack");
+                Console.WriteLine("A to view X amount of cards in stack");
+                Console.WriteLine("C to Create a Flashcard in current stack");
+                Console.WriteLine("E to Edit a Flashcard");
+                Console.WriteLine("D to Delete a Flashcard");
+                Console.WriteLine("------------------------------------\n");
+
+                var option = Console.ReadLine();
+                switch(option)
+                {
+                    case "O":
+                        MainMenu();
+                        break;
+                    case "X":
+                        ManageStacks();
+                        //ManageFlashCards();
+                        break;
+                    case "V":
+                        DisplayAllFlashCardsInStack(stackId);
+                        break;
+                    case "A":
+                        break;
+                    case "C":
+                        InsertFlashCard(stackId);
+                        break;
+                    case "E":
+                        EditFlashCard();
+                        break;
+                    case "D":
+                        RemoveFlashCard();
+                        break;
+                }
             }
+
 
         }
 
