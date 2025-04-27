@@ -171,6 +171,7 @@ namespace FlashCards.Controller
                 selectCmd.CommandText = "SELECT Question, Answer FROM FlashCard WHERE StackId = @stackId";
                 selectCmd.Parameters.AddWithValue("@stackId", stackId);
 
+                int count = 1;
                 using (var reader = selectCmd.ExecuteReader())
                 {
                     if (!reader.HasRows)
@@ -185,7 +186,8 @@ namespace FlashCards.Controller
                         // insert reader params to new FlashCard obkject
                         string question = reader.GetString(0);
                         string answer = reader.GetString(1);
-                        Console.WriteLine($"- {question}: {answer}");
+                        Console.WriteLine($"id: {count} Question: {question} Answer: {answer}");
+                        count += 1;
 
 
                     }
@@ -227,11 +229,6 @@ namespace FlashCards.Controller
             }
         }
 
-        public void MakeCardImage(string name)
-        {
-
-
-        }
 
 
     }

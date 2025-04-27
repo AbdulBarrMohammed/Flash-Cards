@@ -89,7 +89,6 @@ namespace FlashCards
                 Console.WriteLine("O to return to main menu");
                 Console.WriteLine("X to change current stack");
                 Console.WriteLine("V to view all Flashcards in stack");
-                Console.WriteLine("A to view X amount of cards in stack");
                 Console.WriteLine("C to Create a Flashcard in current stack");
                 Console.WriteLine("E to Edit a Flashcard");
                 Console.WriteLine("D to Delete a Flashcard");
@@ -107,8 +106,6 @@ namespace FlashCards
                     case "V":
                         DisplayAllFlashCardsInStack(stackId);
                         break;
-                    case "A":
-                        break;
                     case "C":
                         InsertFlashCard(stackId);
                         break;
@@ -117,6 +114,9 @@ namespace FlashCards
                         break;
                     case "D":
                         RemoveFlashCard();
+                        break;
+                    default:
+                        Console.WriteLine("\nTheir is no option for letter input\n");
                         break;
                 }
             }
@@ -143,10 +143,10 @@ namespace FlashCards
             else
             {
                 Study(stackName);
+
                 // Pass stack name to function to display stack
                 SelectStackItem(stackName);
             }
-
 
 
         }
@@ -154,7 +154,7 @@ namespace FlashCards
         public void DisplayAllFlashCardsInStack(int stackId)
         {
             stackController.DisplayAllStackCards(stackId);
-            Console.WriteLine("Enter any key to return");
+            
         }
 
         public void InsertFlashCard(int stackId)
