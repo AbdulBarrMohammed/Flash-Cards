@@ -220,15 +220,15 @@ namespace FlashCards
 
         public void EditStack()
         {
-            stackController.DisplayAllStacks();
+            /* stackController.DisplayAllStacks();
             Console.WriteLine("---------------------------");
             Console.WriteLine("Choose a stack id to edit: ");
             Console.WriteLine("Or input 0 to exit input");
             Console.WriteLine("---------------------------");
             var stackId = Console.ReadLine();
             int cardId;
-            Int32.TryParse(stackId, out cardId);
-            stackController.UpdateStack(cardId);
+            Int32.TryParse(stackId, out cardId); */
+            stackController.UpdateStack();
         }
 
         public void AddStack()
