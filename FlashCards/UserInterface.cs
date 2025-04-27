@@ -32,6 +32,7 @@ namespace FlashCards
                 switch(actionChoice)
                 {
                     case MenuAction.Exit:
+                        Console.WriteLine("Exit was clicked");
                         isOn = false;
                         break;
                     case MenuAction.Manage_Stacks:
@@ -64,6 +65,9 @@ namespace FlashCards
                     // Wait for user input before continuing
                     Console.WriteLine("\nPress any key to return to the menu...");
                     Console.ReadKey();
+                }
+                else {
+                    break;
                 }
 
             }
@@ -124,18 +128,26 @@ namespace FlashCards
         {
             // Display different stacks to user
             stackController.DisplayAllStacks();
-            Console.WriteLine("---------------------------");
+            Console.WriteLine("\n---------------------------");
             Console.WriteLine("Input a current stack name");
             Console.WriteLine("Or input 0 to exit input");
-            Console.WriteLine("---------------------------");
+            Console.WriteLine("---------------------------\n");
             var stackName = Console.ReadLine();
 
             // If user input is 0 return to main menu
-            if (stackName == "0") MainMenu();
-            else Study(stackName);
+            if (stackName == "0")
+            {
+                return;
+            }
 
-            // Pass stack name to function to display stack
-            SelectStackItem(stackName);
+            else
+            {
+                Study(stackName);
+                // Pass stack name to function to display stack
+                SelectStackItem(stackName);
+            }
+
+
 
         }
 
@@ -174,7 +186,7 @@ namespace FlashCards
             var stackName = Console.ReadLine();
 
             // If user input is 0 return to main menu
-            if (stackName == "0") MainMenu();
+            if (stackName == "0") return;
 
             else Study(stackName);
         }
@@ -205,8 +217,6 @@ namespace FlashCards
                 SelectFlashCard(cardId);
             }
 
-
-
         }
 
         public void SelectFlashCard(int id)
@@ -233,11 +243,10 @@ namespace FlashCards
             Console.WriteLine("Or input 0 to exit input");
             Console.WriteLine("---------------------------");
             var stackName = Console.ReadLine();
-            
-            // If user input is 0 return to main menu
-            if (stackName == "0") MainMenu();
-            else stackController.InsertToStack(stackName);
 
+            // If user input is 0 return to main menu
+            if (stackName == "0") return;
+            else stackController.InsertToStack(stackName);
 
 
         }

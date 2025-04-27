@@ -186,6 +186,8 @@ namespace FlashCards.Controller
                         string question = reader.GetString(0);
                         string answer = reader.GetString(1);
                         Console.WriteLine($"- {question}: {answer}");
+
+
                     }
                 }
 
@@ -217,11 +219,18 @@ namespace FlashCards.Controller
                     {
                         string name = reader.GetString(0);
                         Console.WriteLine($"- {name}");
+                        //MakeCardImage(name);
                     }
                 }
 
                 connection.Close();
             }
+        }
+
+        public void MakeCardImage(string name)
+        {
+
+
         }
 
 
