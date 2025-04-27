@@ -142,7 +142,7 @@ namespace FlashCards
 
             else
             {
-                Study(stackName);
+                //Study(stackName);
 
                 // Pass stack name to function to display stack
                 SelectStackItem(stackName);
@@ -154,7 +154,7 @@ namespace FlashCards
         public void DisplayAllFlashCardsInStack(int stackId)
         {
             stackController.DisplayAllStackCards(stackId);
-            
+
         }
 
         public void InsertFlashCard(int stackId)
