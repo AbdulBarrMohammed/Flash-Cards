@@ -75,11 +75,13 @@ namespace FlashCards.Controller
             int stackId;
             if (!Int32.TryParse(id, out stackId))
             {
-                Console.WriteLine("Please enter a number\n");
+                Console.WriteLine("\nPlease enter a number\n");
                 UpdateStack();
             }
+
             else
             {
+
                 Console.WriteLine("---------------------------");
                 Console.WriteLine("Add new name of stack: ");
                 Console.WriteLine("Or input 0 to exit input");
@@ -89,8 +91,8 @@ namespace FlashCards.Controller
                 using (var connection = new SqlConnection(MockDatabase.GetConnectionString()))
                 {
 
-                    connection.Open();
 
+                    connection.Open();
 
                     var selectCmd = connection.CreateCommand();
                     // Insert updated code item properties to database
@@ -98,20 +100,23 @@ namespace FlashCards.Controller
                     selectCmd.Parameters.AddWithValue("@name", newStackName);
                     selectCmd.Parameters.AddWithValue("@id", stackId);
 
-                    // Runs the insert command
-                    selectCmd.ExecuteNonQuery();
 
-                    Console.WriteLine("Updated Stack Successfully");
+                    // Check if id is in stack
+                    int rowCount = selectCmd.ExecuteNonQuery();
+                    if (rowCount == 0)
+                    {
+                        Console.WriteLine($"\n\nRecord with Id {stackId} doesn't exist. \n\n");
+                        UpdateStack();
+                    }
+
+                    else {
+                        Console.WriteLine("\nUpdated Stack Successfully\n");
+                    }
 
                     connection.Close();
 
                 }
             }
-
-
-
-
-
         }
 
 
