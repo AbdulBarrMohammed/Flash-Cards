@@ -69,22 +69,6 @@ namespace FlashCards
             }
         }
 
-        public void ManageStacks()
-        {
-            // Display different stacks to user
-            stackController.DisplayAllStacks();
-            Console.WriteLine("---------------------------");
-            Console.WriteLine("Input a current stack name");
-            Console.WriteLine("Or input 0 to exit input");
-            Console.WriteLine("---------------------------");
-            var stackName = Console.ReadLine();
-
-
-            // Pass stack name to function to display stack
-            SelectStackItem(stackName);
-
-        }
-
 
         public void SelectStackItem(string stackName)
         {
@@ -136,12 +120,29 @@ namespace FlashCards
 
         }
 
+        public void ManageStacks()
+        {
+            // Display different stacks to user
+            stackController.DisplayAllStacks();
+            Console.WriteLine("---------------------------");
+            Console.WriteLine("Input a current stack name");
+            Console.WriteLine("Or input 0 to exit input");
+            Console.WriteLine("---------------------------");
+            var stackName = Console.ReadLine();
+
+            // If user input is 0 return to main menu
+            if (stackName == "0") MainMenu();
+            else Study(stackName);
+
+            // Pass stack name to function to display stack
+            SelectStackItem(stackName);
+
+        }
+
         public void DisplayAllFlashCardsInStack(int stackId)
         {
             stackController.DisplayAllStackCards(stackId);
-            Console.WriteLine("Select card id to interact with card");
-            Console.WriteLine("press 0 to exit");
-
+            Console.WriteLine("Enter any key to return");
         }
 
         public void InsertFlashCard(int stackId)
@@ -171,7 +172,11 @@ namespace FlashCards
             Console.WriteLine("Or input 0 to exit input");
             Console.WriteLine("---------------------------");
             var stackName = Console.ReadLine();
-            Study(stackName);
+
+            // If user input is 0 return to main menu
+            if (stackName == "0") MainMenu();
+
+            else Study(stackName);
         }
 
         public void Study(string stackName)
@@ -188,12 +193,18 @@ namespace FlashCards
 
         public void ViewFlashCards()
         {
-            Console.WriteLine("Input an Id of a flashcard");
+            Console.WriteLine("\nInput an Id of a flashcard\n");
             flashCardController.DisplayAllFlashCards();
             var id = Console.ReadLine();
             int cardId;
-            Int32.TryParse(id, out cardId);
-            SelectFlashCard(cardId);
+            if (!Int32.TryParse(id, out cardId)) {
+                Console.WriteLine("\nPlease enter a number\n");
+                ViewFlashCards();
+            }
+            else {
+                SelectFlashCard(cardId);
+            }
+
 
 
         }
@@ -206,34 +217,29 @@ namespace FlashCards
         public void DeleteStack()
         {
 
-            stackController.DisplayAllStacks();
-            Console.WriteLine("---------------------------");
-            Console.WriteLine("Choose a stack id to delete: ");
-            Console.WriteLine("Or input 0 to exit input");
-            Console.WriteLine("---------------------------");
-            var stackId = Console.ReadLine();
-            int cardId;
-            Int32.TryParse(stackId, out cardId);
-            stackController.DeleteFromStack(cardId);
+            stackController.DeleteFromStack();
 
         }
 
         public void EditStack()
         {
-            /* stackController.DisplayAllStacks();
-            Console.WriteLine("---------------------------");
-            Console.WriteLine("Choose a stack id to edit: ");
-            Console.WriteLine("Or input 0 to exit input");
-            Console.WriteLine("---------------------------");
-            var stackId = Console.ReadLine();
-            int cardId;
-            Int32.TryParse(stackId, out cardId); */
             stackController.UpdateStack();
         }
 
         public void AddStack()
         {
-            stackController.InsertToStack();
+            Console.WriteLine("---------------------------");
+            Console.WriteLine("Add name of new stack: ");
+            Console.WriteLine("Or input 0 to exit input");
+            Console.WriteLine("---------------------------");
+            var stackName = Console.ReadLine();
+            
+            // If user input is 0 return to main menu
+            if (stackName == "0") MainMenu();
+            else stackController.InsertToStack(stackName);
+
+
+
         }
     }
 }

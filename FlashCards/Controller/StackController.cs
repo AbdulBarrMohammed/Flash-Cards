@@ -11,13 +11,8 @@ namespace FlashCards.Controller
     public class StackController
     {
 
-        public void InsertToStack()
+        public void InsertToStack(string stackName)
         {
-            Console.WriteLine("---------------------------");
-            Console.WriteLine("Add name of new stack: ");
-            Console.WriteLine("Or input 0 to exit input");
-            Console.WriteLine("---------------------------");
-            var stackName = Console.ReadLine();
 
             using (var connection = new SqlConnection(MockDatabase.GetConnectionString()))
             {
@@ -37,19 +32,33 @@ namespace FlashCards.Controller
             }
         }
 
-        public void DeleteFromStack(int stackId)
+        public void DeleteFromStack()
         {
-            using (var connection = new SqlConnection(MockDatabase.GetConnectionString())) {
+            DisplayAllStacks();
+            Console.WriteLine("---------------------------");
+            Console.WriteLine("Choose a stack id to delete: ");
+            Console.WriteLine("---------------------------");
+            var stackId = Console.ReadLine();
+            int cardId;
+            if (!Int32.TryParse(stackId, out cardId))
+            {
+                Console.WriteLine("\nPlease enter a number\n");
+                DeleteFromStack();
+            }
+            else
+            {
+
+                using (var connection = new SqlConnection(MockDatabase.GetConnectionString())) {
                 connection.Open();
                 var tableCmd = connection.CreateCommand();
                 tableCmd.CommandText = $"DELETE from Stack WHERE Id = @stackId";
-                tableCmd.Parameters.AddWithValue("@stackId", stackId);
+                tableCmd.Parameters.AddWithValue("@stackId", cardId);
 
                 int rowCount = tableCmd.ExecuteNonQuery();
                 if (rowCount == 0)
                 {
                     System.Console.WriteLine($"\n\nRecord with Id {stackId} doesn't exist. \n\n");
-                    DeleteFromStack(stackId);
+                    DeleteFromStack();
                 }
 
                 else
@@ -59,7 +68,11 @@ namespace FlashCards.Controller
                 }
 
 
+                }
+
             }
+
+
 
         }
 
@@ -68,7 +81,6 @@ namespace FlashCards.Controller
             DisplayAllStacks();
             Console.WriteLine("---------------------------");
             Console.WriteLine("Choose a stack id to edit: ");
-            Console.WriteLine("Or input 0 to exit input");
             Console.WriteLine("---------------------------");
             var id = Console.ReadLine();
 
@@ -84,13 +96,11 @@ namespace FlashCards.Controller
 
                 Console.WriteLine("---------------------------");
                 Console.WriteLine("Add new name of stack: ");
-                Console.WriteLine("Or input 0 to exit input");
                 Console.WriteLine("---------------------------");
                 var newStackName = Console.ReadLine();
 
                 using (var connection = new SqlConnection(MockDatabase.GetConnectionString()))
                 {
-
 
                     connection.Open();
 
